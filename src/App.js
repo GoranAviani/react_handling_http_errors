@@ -17,6 +17,7 @@ function App() {
         const processedResult = result.data.results.map(
             (row) => {
                 return {
+                        id: row.episode_id,
                         title: row.title,
                         releaseDate: row.release_date,
                         openingText: row.opening_crawl,
