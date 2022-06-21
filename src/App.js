@@ -13,10 +13,9 @@ function App() {
         url: 'https://swapi.dev/api/films/'
    })
         console.log(result)
-        const resultJson = await result.json()
-        console.log(resultJson)
 
-        const processedResult = resultJson.map(
+
+        const processedResult = result.map(
             (row) => {
                 return {
                         title: row.title
