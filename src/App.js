@@ -26,8 +26,6 @@ function App() {
         )
         console.log(processedResult)
         setMovies(processedResult)
-
-
     }
 
   return (
