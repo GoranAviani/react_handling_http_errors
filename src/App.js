@@ -18,7 +18,8 @@ function App() {
             (row) => {
                 return {
                         title: row.title,
-                        releaseDate: row.releaseDate,
+                        releaseDate: row.release_date,
+                        openingText: row.opening_crawl,
                 }
             }
         )
