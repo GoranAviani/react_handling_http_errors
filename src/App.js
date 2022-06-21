@@ -12,6 +12,7 @@ function App() {
         method: "get",
         url: 'https://swapi.dev/api/films/'
    })
+        console.log(result)
         const resultJson = await result.json()
         console.log(resultJson)
 
@@ -22,6 +23,7 @@ function App() {
                 }
             }
         )
+        console.log(processedResult)
         setMovies(processedResult)
 
 
