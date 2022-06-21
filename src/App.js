@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
 import axios from "axios";
 
 function App() {
-
+    const [movies, setMovies ] = useState([])
     const fetchMoviesHandler = async () => {
 
    const result = await axios({
@@ -14,7 +14,20 @@ function App() {
    })
         const resultJson = await result.json()
         console.log(resultJson)
+
+        const processedResult = resultJson.map(
+            (row) => {
+                return {
+                        title: row.title
+                }
+            }
+        )
+        setMovies(processedResult)
+
+
     }
+
+
 
 
   return (
@@ -23,7 +36,7 @@ function App() {
         <button onClick={() => {fetchMoviesHandler()}}>Fetch Movies</button>
       </section>
       <section>
-        <MoviesList movies={"dummyMovies"} />
+        <MoviesList movies={movies} />
       </section>
     </React.Fragment>
   );
