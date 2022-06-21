@@ -2,30 +2,28 @@ import React from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
+import axios from "axios";
 
 function App() {
-  const dummyMovies = [
-    {
-      id: 1,
-      title: 'Some Dummy Movie',
-      openingText: 'This is the opening text of the movie',
-      releaseDate: '2021-05-18',
-    },
-    {
-      id: 2,
-      title: 'Some Dummy Movie 2',
-      openingText: 'This is the second opening text of the movie',
-      releaseDate: '2021-05-19',
-    },
-  ];
+
+    const fetchMoviesHandler = async () => {
+
+   const result = await axios({
+        method: "get",
+        url: 'https://swapi.dev/api/films/'
+   })
+        const resultJson = await result.json()
+        console.log(resultJson)
+    }
+
 
   return (
     <React.Fragment>
       <section>
-        <button>Fetch Movies</button>
+        <button onClick={() => {fetchMoviesHandler()}}>Fetch Movies</button>
       </section>
       <section>
-        <MoviesList movies={dummyMovies} />
+        <MoviesList movies={"dummyMovies"} />
       </section>
     </React.Fragment>
   );
