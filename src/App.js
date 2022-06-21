@@ -17,7 +17,8 @@ function App() {
         const processedResult = result.data.results.map(
             (row) => {
                 return {
-                        title: row.title
+                        title: row.title,
+                        releaseDate: row.releaseDate,
                 }
             }
         )
