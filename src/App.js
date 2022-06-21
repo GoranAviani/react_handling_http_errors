@@ -27,9 +27,6 @@ function App() {
 
     }
 
-
-
-
   return (
     <React.Fragment>
       <section>
