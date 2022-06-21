@@ -12,7 +12,7 @@ function App() {
         method: "get",
         url: 'https://swapi.dev/api/films/'
    })
-        console.log(result)
+        console.log(typeof result)
 
 
         const processedResult = result.map(
