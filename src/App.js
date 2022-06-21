@@ -38,7 +38,7 @@ setIsLoading (true)
       </section>
       <section>
           {isLoading && <p>Loading...</p>}
-          {!isLoading && <MoviesList movies={movies} /> }
+          {!isLoading && movies.length > 0 &&  <MoviesList movies={movies} /> }
       </section>
     </React.Fragment>
   );
