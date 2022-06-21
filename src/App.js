@@ -12,10 +12,9 @@ function App() {
         method: "get",
         url: 'https://swapi.dev/api/films/'
    })
-        console.log( result.data.result)
+        console.log( result.data.results)
 
-
-        const processedResult = result.data.result.map(
+        const processedResult = result.data.results.map(
             (row) => {
                 return {
                         title: row.title
