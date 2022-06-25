@@ -1,7 +1,7 @@
 const processedResult = (result) => {
     console.log("process")
     console.log(result)
-    const a = result.result.results.map(
+    const a = result.result.data.results.map(
         (row) => {
             return {
                 id: row.episode_id,
@@ -12,7 +12,6 @@ const processedResult = (result) => {
         }
     )
     return a
-    console.log(a)
 }
 
 export default processedResult;
