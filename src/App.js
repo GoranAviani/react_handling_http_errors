@@ -1,28 +1,9 @@
 import React, {useState} from 'react';
 
 import MoviesList from './components/MoviesList';
+import movieApi from './components/MovieApi'
 import './App.css';
-import axios from "axios";
 
-
-const movieAPI = async () => {
-    const result = await axios({
-        method: "get",
-        url: 'https://swapi.dev/api/films/'
-    })
-
-    const processedResult = result.data.results.map(
-        (row) => {
-            return {
-                id: row.episode_id,
-                title: row.title,
-                releaseDate: row.release_date,
-                openingText: row.opening_crawl,
-            }
-        }
-    )
-    return processedResult
-}
 
 function App() {
     const [movies, setMovies] = useState([])
@@ -30,7 +11,7 @@ function App() {
 
     const fetchMoviesHandler = async () => {
         setIsLoading(true)
-        const movieResult = await movieAPI()
+        const movieResult = await movieApi()
         setMovies(movieResult)
         setIsLoading(false)
     }
