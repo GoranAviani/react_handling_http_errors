@@ -24,7 +24,7 @@ const movieAPI = async () => {
         console.log(error.config);
     });
 
-    const processedResult = result.data.results.map(
+    return result.data.results.map(
         (row) => {
             return {
                 id: row.episode_id,
@@ -34,7 +34,6 @@ const movieAPI = async () => {
             }
         }
     )
-    return processedResult
 }
 
 export default movieAPI();
