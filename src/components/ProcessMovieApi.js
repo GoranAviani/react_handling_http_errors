@@ -1,6 +1,7 @@
-const processedResult = async ({result}) => {
+const processedResult = ({result}) => {
+    console.log("process")
     console.log(result)
-    const a = await result.result.data.results.map(
+    const a = result.result.results.map(
         (row) => {
             return {
                 id: row.episode_id,
