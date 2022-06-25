@@ -11,7 +11,7 @@ function App() {
 
     const fetchMoviesHandler = async () => {
         setIsLoading(true)
-        const movieResult = await movieApi()
+        const movieResult = await movieApi
         setMovies(movieResult)
         setIsLoading(false)
     }
