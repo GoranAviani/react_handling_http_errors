@@ -2,8 +2,6 @@ import axios from "axios";
 import processedResult from './ProcessMovieApiResult'
 
 const movieAPI = async () => {
-
-
     const result = await axios({
         method: "get",
         url: 'https://swapi.dev/api/films/'
