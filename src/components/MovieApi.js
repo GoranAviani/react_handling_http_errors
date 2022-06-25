@@ -32,11 +32,10 @@ const movieAPI = async (url, setError) => {
 
     });
 
-    if (!error) {
-        const a = processedResult(result)
-        console.log(a)
-        return a
-    }
+    const a = processedResult(result)
+    console.log(a)
+    return a
+
 
 }
 

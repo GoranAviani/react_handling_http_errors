@@ -9,7 +9,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
 
-    const url = 'https://swapi.dev/api/films/error  '
+    const url = 'https://swapi.dev/api/films/ijij  '
 
     const fetchMoviesHandler = async () => {
         setIsLoading(true)
