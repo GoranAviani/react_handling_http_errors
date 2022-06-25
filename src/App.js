@@ -8,8 +8,6 @@ function App() {
     const [movies, setMovies] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
-    const [apiResult, setApiResult] = useState()
-
 
     const fetchMoviesHandler = async () => {
         setIsLoading(true)
