@@ -9,9 +9,11 @@ function App() {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(null)
 
+    const url = 'https://swapi.dev/api/films/error  '
+
     const fetchMoviesHandler = async () => {
         setIsLoading(true)
-        const movieResult = await movieApi(setError)
+        const movieResult = await movieApi(url, setError)
         setMovies(movieResult)
         setIsLoading(false)
     }
@@ -26,7 +28,7 @@ function App() {
                 </button>
             </section>
             <section>
-                {error}
+                {error && <p>Error: {error.status}</p>}
                 {isLoading && <p>Loading...</p>}
                 {!isLoading && movies.length > 0 && <MoviesList movies={movies}/>}
                 {!isLoading && movies.length === 0 && <p>No movies found</p>}
