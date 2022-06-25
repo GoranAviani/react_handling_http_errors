@@ -32,7 +32,7 @@ function App() {
 
         } catch (error) {
             console.log(error)
-            setError(`message: ${error.message}, error: ${error.error} `)
+            setError(`message: ${error.message}, error: ${error.error} all: ${error}`)
         }
         setIsLoading(false);
     }
