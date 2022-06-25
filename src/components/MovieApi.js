@@ -1,23 +1,42 @@
 import axios from "axios";
+import processedResult from './ProcessMovieApiResult'
 
-
-const movieAPI = async () => {
+const movieAPI = async (url, setError) => {
     const result = await axios({
         method: "get",
-        url: 'https://swapi.dev/api/films/'
-    })
+        url: url
+    }).catch(function (error) {
+        if (error.response) {
+            console.log(error.response.data);
+            console.log(error.response.status);
+            console.log(error.response.headers);
 
-    const processedResult = result.data.results.map(
-        (row) => {
-            return {
-                id: row.episode_id,
-                title: row.title,
-                releaseDate: row.release_date,
-                openingText: row.opening_crawl,
-            }
+
+            setError({
+                status: error.response.status,
+                data: error.response.data.detail,
+            })
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+
+        } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            console.log(error.request);
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log('Error', error.message);
         }
-    )
-    return processedResult
+        console.log(error.config);
+
+    });
+
+    const a = processedResult(result)
+    console.log(a)
+    return a
+
+
 }
 
-export default movieAPI();
+export default movieAPI;
