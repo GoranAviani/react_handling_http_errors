@@ -10,7 +10,6 @@ const movieAPI = async () => {
         method: "get",
         url: 'https://swapi.dev/api/films/'
     })
-    console.log(result.data.results)
 
     const processedResult = result.data.results.map(
         (row) => {
@@ -48,7 +47,6 @@ function App() {
                 {isLoading && <p>Loading...</p>}
                 {!isLoading && movies.length > 0 && <MoviesList movies={movies}/>}
                 {!isLoading && movies.length === 0 && <p>No movies found</p>}
-
             </section>
         </React.Fragment>
     );
