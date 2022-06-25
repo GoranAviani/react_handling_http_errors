@@ -1,19 +1,5 @@
 import axios from "axios";
-
-
-const processedResult = ({result}) => {
-    const a = result.data.results.map(
-        (row) => {
-            return {
-                id: row.episode_id,
-                title: row.title,
-                releaseDate: row.release_date,
-                openingText: row.opening_crawl,
-            }
-        }
-    )
-    return a
-}
+import processedResult from './ProcessMovieApi'
 
 const movieAPI = async () => {
     const result = await axios({
@@ -36,10 +22,12 @@ const movieAPI = async () => {
             console.log('Error', error.message);
         }
         console.log(error.config);
-    });
 
-    const b = processedResult(result)
-    return b
+    });
+    console.log(result)
+    const c =  processedResult(result)
+    console.log(c)
+    return c
 }
 
 export default movieAPI();
