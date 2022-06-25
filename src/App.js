@@ -22,7 +22,6 @@ const movieAPI = async () => {
             }
         }
     )
-    console.log(processedResult)
     return processedResult
 }
 
