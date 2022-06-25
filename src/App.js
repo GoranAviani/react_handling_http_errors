@@ -11,7 +11,7 @@ function App() {
 
     const fetchMoviesHandler = async () => {
         setIsLoading(true)
-        const movieResult = await movieApi()
+        const movieResult = await movieApi(setError)
         setMovies(movieResult)
         setIsLoading(false)
     }
@@ -26,6 +26,7 @@ function App() {
                 </button>
             </section>
             <section>
+                {error}
                 {isLoading && <p>Loading...</p>}
                 {!isLoading && movies.length > 0 && <MoviesList movies={movies}/>}
                 {!isLoading && movies.length === 0 && <p>No movies found</p>}

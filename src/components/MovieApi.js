@@ -1,12 +1,13 @@
 import axios from "axios";
 import processedResult from './ProcessMovieApiResult'
 
-const movieAPI = async () => {
+const movieAPI = async (setError) => {
     const result = await axios({
         method: "get",
         url: 'https://swapi.dev/api/films/'
     }).catch(function (error) {
         if (error.response) {
+            setError((error.response.status))
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx
             console.log(error.response.data);
