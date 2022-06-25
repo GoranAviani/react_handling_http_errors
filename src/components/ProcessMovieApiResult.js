@@ -1,8 +1,7 @@
 const processedResult = (result) => {
-    console.log("process")
-    console.log(result)
-    const a = result.result.data.results.map(
+    return result.data.results.map(
         (row) => {
+            console.log(row)
             return {
                 id: row.episode_id,
                 title: row.title,
@@ -11,7 +10,6 @@ const processedResult = (result) => {
             }
         }
     )
-    return a
 }
 
 export default processedResult;
