@@ -14,8 +14,7 @@ const movieAPI = async (url, setError) => {
 
             setError({
                 status: error.response.status,
-                data: error.response.data,
-                headers: error.response.headers
+                data: error.response.data.detail,
             })
             // The request was made and the server responded with a status code
             // that falls out of the range of 2xx

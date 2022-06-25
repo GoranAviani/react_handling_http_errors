@@ -28,7 +28,7 @@ function App() {
                 </button>
             </section>
             <section>
-                {error && <p>Error status: {error.status}, Data detail: {error.data.detail} </p>}
+                {error && <p>Error status: {error.status}, Data detail: {error.data} </p>}
                 {isLoading && <p>Loading...</p>}
                 {!isLoading && movies.length > 0 && <MoviesList movies={movies}/>}
                 {!isLoading && movies.length === 0 && <p>No movies found</p>}
