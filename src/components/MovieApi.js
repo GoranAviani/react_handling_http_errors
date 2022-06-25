@@ -1,6 +1,20 @@
 import axios from "axios";
 
 
+const processedResult = ({result}) => {
+    const a = result.data.results.map(
+        (row) => {
+            return {
+                id: row.episode_id,
+                title: row.title,
+                releaseDate: row.release_date,
+                openingText: row.opening_crawl,
+            }
+        }
+    )
+    return a
+}
+
 const movieAPI = async () => {
     const result = await axios({
         method: "get",
@@ -24,16 +38,8 @@ const movieAPI = async () => {
         console.log(error.config);
     });
 
-    return result.data.results.map(
-        (row) => {
-            return {
-                id: row.episode_id,
-                title: row.title,
-                releaseDate: row.release_date,
-                openingText: row.opening_crawl,
-            }
-        }
-    )
+    const b = processedResult(result)
+    return b
 }
 
 export default movieAPI();
