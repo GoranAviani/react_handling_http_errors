@@ -11,23 +11,28 @@ function App() {
 
     async function fetchMoviesHandler() {
         setIsLoading(true);
-        const response = await fetch('https://swapi.dev/api/films/');
-        if (!response.ok) {
-throw new Error("error happened")
+        try {
+            const response = await fetch('https://swapi.dev/api/films/aa');
+            if (!response.ok) {
+                throw new Error("error happened")
+            }
+            const data = await response.json();
+            setError(null);
+
+
+            const transformedMovies = data.results.map((movieData) => {
+                return {
+                    id: movieData.episode_id,
+                    title: movieData.title,
+                    openingText: movieData.opening_crawl,
+                    releaseDate: movieData.release_date,
+                };
+            });
+            setMovies(transformedMovies);
+
+        } catch (error) {
+            setError(error.message)
         }
-        const data = await response.json();
-        setError(null);
-
-
-        const transformedMovies = data.results.map((movieData) => {
-            return {
-                id: movieData.episode_id,
-                title: movieData.title,
-                openingText: movieData.opening_crawl,
-                releaseDate: movieData.release_date,
-            };
-        });
-        setMovies(transformedMovies);
         setIsLoading(false);
     }
 
