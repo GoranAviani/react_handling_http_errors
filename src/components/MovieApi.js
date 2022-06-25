@@ -2,6 +2,7 @@ import axios from "axios";
 import processedResult from './ProcessMovieApiResult'
 
 const movieAPI = async (url, setError) => {
+    let errorBool = false
     const result = await axios({
         method: "get",
         url: url
@@ -31,7 +32,13 @@ const movieAPI = async (url, setError) => {
         console.log(error.config);
 
     });
-    return processedResult(result)
+
+    if (!error) {
+        const a = processedResult(result)
+        console.log(a)
+        return a
+    }
+
 }
 
 export default movieAPI;
