@@ -4,31 +4,39 @@ import MoviesList from './components/MoviesList';
 import './App.css';
 import axios from "axios";
 
+
+const movieAPI = async () => {
+    const result = await axios({
+        method: "get",
+        url: 'https://swapi.dev/api/films/'
+    })
+    console.log(result.data.results)
+
+    const processedResult = result.data.results.map(
+        (row) => {
+            return {
+                id: row.episode_id,
+                title: row.title,
+                releaseDate: row.release_date,
+                openingText: row.opening_crawl,
+            }
+        }
+    )
+    console.log(processedResult)
+    return processedResult
+}
+
 function App() {
     const [movies, setMovies] = useState([])
+
     const [isLoading, setIsLoading] = useState(false)
 
-    const fetchMoviesHandler = async () => {
-        setIsLoading(true)
-        const result = await axios({
-            method: "get",
-            url: 'https://swapi.dev/api/films/'
-        })
-        console.log(result.data.results)
+    const fetchMoviesHandler = () => {
+            setIsLoading(true)
 
-        const processedResult = result.data.results.map(
-            (row) => {
-                return {
-                    id: row.episode_id,
-                    title: row.title,
-                    releaseDate: row.release_date,
-                    openingText: row.opening_crawl,
-                }
-            }
-        )
-        console.log(processedResult)
-        setMovies(processedResult)
-        setIsLoading(false)
+           const movieResult = movieAPI()
+        setMovies(movieResult)
+    setIsLoading(false)
     }
 
     return (
