@@ -25,9 +25,9 @@ const movieAPI = async () => {
 
     });
     console.log(result)
-    const c =  processedResult(result)
+    const c = processedResult(result)
     console.log(c)
     return c
 }
 
-export default movieAPI();
+export default movieAPI;
