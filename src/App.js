@@ -37,6 +37,7 @@ function App() {
         setIsLoading(false);
     }
 
+
     let content = "click to get movies"
 
     if (movies.length > 0) {
