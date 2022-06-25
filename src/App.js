@@ -28,15 +28,13 @@ const movieAPI = async () => {
 
 function App() {
     const [movies, setMovies] = useState([])
-
     const [isLoading, setIsLoading] = useState(false)
 
-    const fetchMoviesHandler = () => {
-            setIsLoading(true)
-
-           const movieResult = movieAPI()
+    const fetchMoviesHandler = async () => {
+        setIsLoading(true)
+        const movieResult = await movieAPI()
         setMovies(movieResult)
-    setIsLoading(false)
+        setIsLoading(false)
     }
 
     return (
