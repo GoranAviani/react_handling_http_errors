@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export const movieAPI = async () => {
+const movieAPI = async () => {
     const result = await axios({
         method: "get",
         url: 'https://swapi.dev/api/films/'
@@ -19,3 +19,5 @@ export const movieAPI = async () => {
     )
     return processedResult
 }
+
+export default movieAPI();
