@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 
 import MoviesList from './components/MoviesList';
+import movieApi from './components/MovieApi'
 import './App.css';
-import axios from "axios";
 
 function App() {
     const [movies, setMovies] = useState([])
@@ -10,24 +10,8 @@ function App() {
 
     const fetchMoviesHandler = async () => {
         setIsLoading(true)
-        const result = await axios({
-            method: "get",
-            url: 'https://swapi.dev/api/films/'
-        })
-        console.log(result.data.results)
-
-        const processedResult = result.data.results.map(
-            (row) => {
-                return {
-                    id: row.episode_id,
-                    title: row.title,
-                    releaseDate: row.release_date,
-                    openingText: row.opening_crawl,
-                }
-            }
-        )
-        console.log(processedResult)
-        setMovies(processedResult)
+        const movieResult = await movieApi
+        setMovies(movieResult)
         setIsLoading(false)
     }
 
@@ -43,7 +27,6 @@ function App() {
                 {isLoading && <p>Loading...</p>}
                 {!isLoading && movies.length > 0 && <MoviesList movies={movies}/>}
                 {!isLoading && movies.length === 0 && <p>No movies found</p>}
-
             </section>
         </React.Fragment>
     );
