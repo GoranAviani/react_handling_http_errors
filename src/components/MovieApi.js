@@ -1,10 +1,10 @@
 import axios from "axios";
 import processedResult from './ProcessMovieApiResult'
 
-const movieAPI = async (setError) => {
+const movieAPI = async (url, setError) => {
     const result = await axios({
         method: "get",
-        url: 'https://swapi.dev/api/films/'
+        url: url
     }).catch(function (error) {
         if (error.response) {
             setError((error.response.status))
