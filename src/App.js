@@ -9,7 +9,7 @@ function App() {
     const [error, setError] = useState(null);
 
 
-    async function fetchMoviesHandler() {
+    const fetchMoviesHandler = async () => {
         setIsLoading(true);
         try {
             const response = await fetch('https://swapi.dev/api/films/asd');
@@ -32,7 +32,7 @@ function App() {
 
         } catch (error) {
             console.log(error)
-            setError(`message: ${error.message}, error: ${error.error} all: ${error}`)
+            setError(`status: ${error.status}, message: ${error.message} statusText: ${error.statusText}`)
         }
         setIsLoading(false);
     }
