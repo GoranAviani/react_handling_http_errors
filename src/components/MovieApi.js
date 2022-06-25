@@ -1,7 +1,24 @@
 import axios from "axios";
-import processedResult from './ProcessMovieApi'
 
 const movieAPI = async () => {
+    const processedResult = ({result}) => {
+    console.log("process")
+    console.log(result)
+    const a = result.result.results.map(
+        (row) => {
+            return {
+                id: row.episode_id,
+                title: row.title,
+                releaseDate: row.release_date,
+                openingText: row.opening_crawl,
+            }
+        }
+    )
+    return a
+}
+
+
+
     const result = await axios({
         method: "get",
         url: 'https://swapi.dev/api/films/'
@@ -25,8 +42,7 @@ const movieAPI = async () => {
 
     });
     console.log(result)
-    const c = processedResult(result.data)
-    return c
+   return processedResult(result)
 }
 
 export default movieAPI;
