@@ -13,4 +13,4 @@ const processedResult = async ({result}) => {
     return a
 }
 
-export default processedResult()
+export default processedResult
